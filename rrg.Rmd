@@ -1,0 +1,70 @@
+---
+title: "Relative Rotation Graph"
+output: html_document
+---
+
+## Relative Rotation Graph
+
+Relative Rotation Graphs (RRGs), developed in 2004 by Julius de Kempenaer, are a phase space like tool plotting the strength of the trend (as the relative performance of one or several securities against a common benchmark) and its momentum over time.
+
+# Relative Strength
+
+```{r data, include = FALSE}
+require (TTR)
+source ("MA.R")
+
+blp <- blpConnect()
+sec.a <- bdh("SX7E Index", c("PX_OPEN", "PX_HIGH", "PX_LOW", "PX_LAST"), Sys.Date() - 365 * 2, Sys.Date()); colnames(ohlc) <- c("Date", "Open", "High", "Low", "Close")
+sec.b <- bdh("SXXE Index", c("PX_OPEN", "PX_HIGH", "PX_LOW", "PX_LAST"), Sys.Date() - 365 * 2, Sys.Date()); colnames(ohlc) <- c("Date", "Open", "High", "Low", "Close")
+
+
+
+
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+
+'EWA US Equity', # iShares MSCI Australia Index ETF
+'EWC US Equity', # iShares MSCI Canada Index ETF
+'EWD US Equity', # iShares MSCI Sweden Index ETF
+'EWG US Equity', # iShares MSCI Germany Index ETF
+'EWH US Equity', # iShares MSCI Hong Kong Index ETF
+'EWI US Equity', # iShares MSCI Italy Index ETF
+'EWJ US Equity', # iShares MSCI Japan Index ETF
+'EWK US Equity', # iShares MSCI Belgium Index ETF
+'EWL US Equity', # iShares MSCI Switzerland Index ETF
+'EWM US Equity', # iShares MSCI Malaysia Index ETF
+'EWN US Equity', # iShares MSCI Netherlands Index ETF
+'EWO US Equity', # iShares MSCI Austria Index ETF
+'EWP US Equity', # iShares MSCI Spain Index ETF
+'EWQ US Equity', # iShares MSCI France Index ETF
+'EWS US Equity', # iShares MSCI Singapore Index ETF
+'EWT US Equity', # iShares MSCI Taiwan Index ETF
+'EWU US Equity', # iShares MSCI United Kingdom Index ETF
+'EWW US Equity', # iShares MSCI Mexico Index ETF
+'EWY US Equity', # iShares MSCI South Korea Index ETF
+'EWZ US Equity', # iShares MSCI Brazil Index ETF
+'EZA US Equity', # iShares MSCI South Africa Index ETF
+'IVV US Equity', # iShares Core S&P 500 Index ETF
+'URTH US Equity' # iShares MSCI World Index ETF
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

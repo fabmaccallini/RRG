@@ -1,0 +1,18 @@
+pxe <- bdh("BMW GY Equity", "PX_LAST", Sys.Date() - 365.25 * 8, Sys.Date())
+pxc <- bdh("BMW CDS EUR SR 5Y D14 Corp", "PX_LAST", Sys.Date() - 365.25 * 8, Sys.Date())
+
+
+dpx <- diff(px$PX_LAST)
+plot(px$PX_LAST[-1], dpx)
+
+lpx <- log(tail(px$PX_LAST, -1) / head(px$PX_LAST, -1))
+plot(px$PX_LAST[-1], lpx)
+
+df <- merge(pxe, pxc, by = "date")
+plot(df[, 2], df[, 3])
+par(mfrow = c(3, 1))
+acf(df[, 2], 365)
+acf(df[, 3], 365)
+ccf(df[, 2], df[, 3], 365)
+df2 <- scale(df[, 2: 3])
+test <- ccf(df2[, 1], df2[, 2], 3)
